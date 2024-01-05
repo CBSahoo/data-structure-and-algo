@@ -1,0 +1,19 @@
+int ans = 0;
+int treeHeight(TreeNode* root) {
+	if(root == NULL) return 0;
+
+	int left = treeHeight(root->left);
+	int right = treeHeight(root->right);
+
+	ans = max(ans, left + right);
+
+	return 1 + max(left, right);
+}
+
+int diameterOfBinaryTree(TreeNode* root) {
+	if(root == NULL) return 0;
+
+	treeHeight(root);
+
+	return ans;
+}
